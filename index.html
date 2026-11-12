@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokédex</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TARJETA PRINCIPAL: contiene toda la app -->
+  <main class="card">
+
+    <!-- Encabezado: título + botón "+" que abre el popup -->
+    <header class="card__header">
+      <h1>Pokédex</h1>
+      <button id="btn-add" class="btn-add" type="button" aria-label="Añadir tipo">+</button>
+    </header>
+
+    <!-- Zona de carriles: JS dibuja aquí un carril por cada tipo -->
+    <section id="lanes" class="lanes" aria-live="polite"></section>
+  </main>
+
+  <!-- POPUP: pide el nombre del tipo (elemento nativo <dialog>) -->
+  <dialog id="dlg" class="dlg">
+    <form id="form-add" class="dlg__form">
+      <label for="input-name">Nombre del tipo (en inglés)</label>
+      <input id="input-name" type="text" placeholder="fire" list="types" autocomplete="off" required>
+      <!-- Sugerencias: los 18 tipos oficiales -->
+      <datalist id="types">
+        <option value="normal"><option value="fire"><option value="water">
+        <option value="electric"><option value="grass"><option value="ice">
+        <option value="fighting"><option value="poison"><option value="ground">
+        <option value="flying"><option value="psychic"><option value="bug">
+        <option value="rock"><option value="ghost"><option value="dragon">
+        <option value="dark"><option value="steel"><option value="fairy">
+      </datalist>
+      <!-- Mensaje de error del popup (tipo inválido, repetido, etc.) -->
+      <p id="dlg-error" class="dlg__error" hidden></p>
+      <div class="dlg__actions">
+        <button type="button" id="btn-cancel" class="btn btn--ghost">Cancelar</button>
+        <button type="submit" id="btn-submit" class="btn">Añadir tipo</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/scrip.js"></script>
+</body>
+</html>
